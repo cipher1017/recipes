@@ -1,0 +1,26 @@
+{% extends 'recipes/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container">
+    <form method="POST">
+        {% csrf_token%}
+        <fieldset class="form-group">
+            <legend class="border-button mb-4">Log in!!</legend>
+            {{ form.as_p }}
+        </fieldset>
+        <div class="form-group py-3">
+            <input class="btn btn.primary" type="submit" value="Log in">
+
+        </div>
+
+    </form>
+    <div class="border-top pt-3">
+        <a href="{% url 'user_register' %}">Dont have an Account? Register Here</a>
+
+    </div>
+
+</div>
+
+{% endblock content%}

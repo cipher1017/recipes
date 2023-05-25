@@ -1,0 +1,28 @@
+{% extends 'recipes/base.html' %}
+
+{% block content%}
+
+<div style="text-align: center; color: white;">
+    <h1 class="app-heading">Discover the Flavors of Culinary Delights</h1>
+    <p class="app-subheading">Unleash your inner chef with our diverse collection of mouthwatering recipes</p>
+    <h2 class="section-heading">Posted Recipes</h2>
+</div>
+<div class="main" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px;">
+  {% for recipe in recipes %}
+    <div class="card my-4" style="width: 18rem; background-color: #F5F5DC;">
+      <div class="card-body">
+        <h5 class="card-title">{{recipe.title}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">@{{recipe.author}} posted</h6>
+        <h7 class="card-subtitle mb-2 text-muted">{{recipe.updated_at|date:"F d, Y"}}</h7>
+        <a href="{% url 'recipes-detail' recipe.pk %}" class="card-link">view recipe</a>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+
+
+{% endblock content%}
+
+
+

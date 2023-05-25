@@ -1,0 +1,24 @@
+{% extends 'recipes/base.html' %}
+<style></style>
+
+
+{% block content%}
+
+<div style="color: white;">
+    <p><h1>Recipe by {{object.author}}</h1></p>
+    <h5>Recipe: {{object.title}}</h5>
+    <p><h4>Ingredients: </h4>{{object.ingredients}}</p>
+    <p><h3>Description: </h3>{{object.description}}</p>
+    <h7>{{object.updated_at|date:"F d, Y"}}</h7>
+</div>
+
+{% if object.author == user or user.is_admin %}
+<div class="col-4">
+  <a class="btn btn-outline-info" href="{% url 'recipes-update' object.id %}">Update</a>
+  <a class="btn btn-outline-danger" href="{% url 'recipes-delete' object.id %}">Delete</a>
+</div>
+
+{% endif %}
+
+
+{% endblock content%}

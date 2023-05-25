@@ -1,0 +1,25 @@
+{% block content %}
+<style>
+
+</style>
+<div class="container">
+    <form method="POST">
+        {% csrf_token%}
+
+            <legend class="mb-4 text-align: center;" >Hey {{recipe.author}}, Are you sure you want to delete "{{object}}?"</legend><br><br>
+            {{ form.save }}
+
+        <div class="form-group py-3">
+            <input class="btn btn-outline-danger" type="submit" value="Delete">
+
+        </div>
+
+    </form>
+    <div class="border-top pt-3">
+        <a href="{% url 'recipes-home' %}">Cancel</a>
+
+    </div>
+
+</div>
+
+{% endblock content%}
