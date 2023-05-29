@@ -30,6 +30,9 @@ class RecipeDetailView(DetailView):
     model = models.Recipe
 
 
+class RecipeCreateView(CreateView):
+    model = models.Recipe
+    fields = "__all__"
 
 
 class RecipeUpdateView(LoginRequiredMixin, CreateView, UserPassesTestMixin, UpdateView):
@@ -55,4 +58,3 @@ def about(request):
         'title': 'about us page'
     }
     return render(request, "recipes/about.html", context)
-

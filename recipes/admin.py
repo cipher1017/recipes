@@ -5,5 +5,5 @@ from . import models
 admin.site.register(models.Recipe)
 admin.site.register(models.Video)
 
-admin.site.register(models.Video)
+
 
