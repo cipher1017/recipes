@@ -4,11 +4,21 @@
 
 {% block content%}
 
-<div style="color: white;">
+<div style="color: black;">
     <p><h1>Recipe by {{object.author}}</h1></p>
     <h5>Recipe: {{object.title}}</h5>
     <p><h4>Ingredients: </h4>{{object.ingredients}}</p>
     <p><h3>Description: </h3>{{object.description}}</p>
+    <div>
+        {% if recipe.images %}
+            <h3>Images:</h3>
+            {% for image in recipe.images.all %}
+               <img src="{{ image.image.url }}" alt="Recipe Image" width="200">
+            {% endfor %}
+        {% endif %}
+
+    </div>
+
     <h7>{{object.updated_at|date:"F d, Y"}}</h7>
 </div>
 

@@ -3,14 +3,14 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container" style="color: white;">
     <form method="POST">
         {% csrf_token%}
         <fieldset class="form-group">
             <legend class="border-button mb-4">Log in!!</legend>
             {{ form.as_p }}
         </fieldset>
-        <div class="form-group py-3">
+        <div class="form-group py-3" style="color: white;">
             <input class="btn btn.primary" type="submit" value="Log in">
 
         </div>

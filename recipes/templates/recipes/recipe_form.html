@@ -1,29 +1,23 @@
 {% extends 'recipes/base.html' %}
-{% load crispy_forms_tags %}
 
 {% block content %}
-<style>
 
 </style>
-<div style="color: white;">
-    <form method="POST">
-        {% csrf_token%}
+<div class="page-background">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
         <fieldset class="form-group">
             <legend class="border-button mb-4">Add Recipe</legend>
             {{ form.as_p }}
+            <input type="file" name="images" multiple>
         </fieldset>
         <div class="form-group py-3">
-
             <input class="btn btn.primary" type="submit" value="Save" style="color: white;">
-
         </div>
-
     </form>
     <div class="border-top pt-3">
         <a href="{% url 'recipes-home' %}">Cancel</a>
-
     </div>
-
 </div>
 
-{% endblock content%}
+{% endblock content %}

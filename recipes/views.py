@@ -4,7 +4,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 
 from . import models
-from .forms import Video_form
+
+from django.core.files.storage import FileSystemStorage
 
 
 # Create your views here.
@@ -17,6 +18,22 @@ def home(request):
 
     }
     return render(request, "recipes/home.html", context)
+
+
+def upload(request):
+    context = {}  # Initialize the context dictionary
+    if request.method == 'POST':
+        if 'document' in request.FILES:
+            uploaded_file = request.FILES['document']
+            if uploaded_file:
+                fs = FileSystemStorage()
+                name = fs.save(uploaded_file.name, uploaded_file)
+                context['url'] = fs.url(name)
+            else:
+                context['message'] = 'Please select a file to upload.'
+        else:
+            context['message'] = 'No file was found in the request.'
+    return render(request, "recipes/upload.html", context)
 
 
 class RecipeListView(ListView):
